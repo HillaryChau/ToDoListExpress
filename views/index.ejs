@@ -6,7 +6,7 @@
   <meta name="description" content="This is where your description goes">
   <meta name="keywords" content="one, two, three">
 
-  <title>Title in the tab</title>
+  <title>To Do List</title>
 
   <!-- external CSS link -->
   <link rel="stylesheet" href="css/style.css" type="text/css">
@@ -31,18 +31,18 @@
     <section class="content">
       <ul id="list">
         <% for(var i=0; i<listItemArray.length; i++) {%>
-          <li class="<%= listItemArray[i].crossout %>" data-value="<%= listItemArray[i]._id %>"><%= listItemArray[i].listItem %> <i class="far fa-window-close"></i></li>
+          <li class="<%= listItemArray[i].isCrossedOut %>" data-value="<%= listItemArray[i]._id %>"><%= listItemArray[i].listItem %> <i class="far fa-window-close" data-value="<%= listItemArray[i]._id %>"></i></li>
         <% } %>
       </ul>
     </section>
 
     <section class="deleteSec">
       <section class="clear">
-        <button id="deleteAll">Clear All</button>
+        <button id="clear-all">Clear All</button>
       </section>
 
       <section class="deleteChecked">
-        <button id="deleteDone" type="button" name="button">Clear Completed</button>
+        <button id="clear-all-completed" type="button" name="button">Clear Completed</button>
       </section>
     </section>
 

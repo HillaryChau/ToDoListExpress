@@ -12,7 +12,6 @@
 /*******************************************/
 body{
   background-color: rgb(135, 195, 206);
-  /* background-color: rgb(135, 195, 206); */
 }
 
 .paper{
@@ -86,7 +85,7 @@ ul{
   margin-right: 17%;
 }
 
-#deleteAll{
+#clear-all{
   color: white;
   background-color: skyblue;
   border-radius: 40px;
@@ -94,11 +93,11 @@ ul{
   height: 2rem;
 }
 
-#deleteAll:hover{
+#clear-all:hover{
   color: magenta;
 }
 
-#deleteDone{
+#clear-all-completed{
   width: 10rem;
   color: white;
   background-color: skyblue;
@@ -107,7 +106,7 @@ ul{
   height: 2rem;
 }
 
-#deleteDone:hover{
+#clear-all-completed:hover{
   color: magenta;
 }
 
