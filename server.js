@@ -35,7 +35,7 @@ app.use(
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
+app.get('/', (req, res) => {   //reads, picks it up from mongodb (our database) to be to displayed on ejs//
   db.collection('toDoListExpress')
     .find()
     .toArray((err, result) => {
@@ -46,14 +46,23 @@ app.get('/', (req, res) => {
     });
 });
 
-app.put('/toDoList', (req, res) => {
+app.put('/toDoList', (req, res) => { //updates the to do list //
   const shouldUncrossout = req.body.isCrossedOut;
 
   db.collection('toDoListExpress').findOneAndUpdate(
     { _id: ObjectId(req.body._id) },
     {
       $set: {
-        isCrossedOut: shouldUncrossout ? '' : 'crossout',
+        isCrossedOut: shouldUncrossout ? '' : 'crossout', //ternary operator//
+        //same as
+        /*
+          let isCrossedOut;
+          if (shouldUncrossout === true){
+          isCrossedOut = ""
+          }else{
+          isCrossedOut = "crossout"
+          }
+        */
       },
     },
     {},
@@ -64,7 +73,7 @@ app.put('/toDoList', (req, res) => {
   );
 });
 
-app.post('/toDoList', (req, res) => {
+app.post('/toDoList', (req, res) => { //.Post request = create something//
   db.collection('toDoListExpress').insertOne(
     {
       listItem: req.body.listItem,
