@@ -48,9 +48,14 @@ app.put('/toDoList', (req, res) => {
       $set: {
         isCrossedOut: "crossout"
       }
+    }, {
+      sort: {
+        _id: -1
+      },
+      upsert: true
     }, (err, result) => {
       if (err) return console.log(err)
-      console.log('saved to database')
+      console.log('put')
       res.redirect('/')
     })
 })
@@ -63,6 +68,7 @@ app.post('/toDoList', (req, res) => {
   }, (err, result) => {
     if (err) return console.log(err)
     console.log('saved to database')
+    console.log(result)
     res.redirect('/')
   })
 })

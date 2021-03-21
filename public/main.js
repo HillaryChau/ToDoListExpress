@@ -10,42 +10,41 @@ const ul = document.querySelector("#list")
 // let count = 0
 
 Array.from(trash).forEach(function(element) { //danstan help//
-      element.addEventListener('click', function(){
-        const item = this.parentNode.innerText
-        console.log(item)
-        console.log(this.parentNode.innerText)
-        fetch('toDoList', {
-          method: 'delete',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            'listItem': item
-          })
-        }).then(function (response) {
-        console.log(response)
-          // window.location.reload()
-        })
-      });
+  element.addEventListener('click', function() {
+    const item = this.parentNode.innerText
+    console.log(item)
+    console.log(this.parentNode.innerText)
+    fetch('toDoList', {
+      method: 'delete',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        'listItem': item
+      })
+    }).then(function(response) {
+      console.log(response)
+      // window.location.reload()
+    })
+  });
 });
 
-Array.from(li).forEach(function(element){
-  element.addEventListener('click',toggleCrossOut)
+Array.from(li).forEach(function(element) {
+  element.addEventListener('click', toggleCrossOut)
 })
 
-function toggleCrossOut(event){ // if the word is clicked on and not crossed out,  it will crossout. If crossed out already it will undo it//
-  console.log("event works",event.target)
+function toggleCrossOut(event) { // if the word is clicked on and not crossed out,  it will crossout. If crossed out already it will undo it//
+  console.log("event works", event.target)
   let _id = event.target.dataset.value
-  fetch('toDoList',{
+  fetch('toDoList', {
     method: 'put',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      _id:_id
+      _id: _id
     })
-  }
-)
+  })
 }
 
 
@@ -53,10 +52,14 @@ function addItem() {
   if (input.value === "") return alert("Please add a 'To Do Item'")
   fetch('toDoList', {
     method: 'post',
-    headers: {'Content-Type': 'application/json'},
+    headers: {
+      'Content-Type': 'application/json'
+    },
     body: JSON.stringify({
-      'listItem': input.value ,
+      'listItem': input.value,
     })
+  }).then(function(response) {
+    window.location.reload()
   })
 }
 
