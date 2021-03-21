@@ -20,7 +20,7 @@
       <main>
 
         <h2 class="directions">Please click your task item to cross it out, for it to be counted as completed </h2>
-        <h2 class="totalDone">Total done: <span id="total"></span></h2>
+        <h2 class="totalDone">Total done: <span id="total"><%= listItemArray.filter(item => item.isCrossedOut).length %></span></h2>
     </section>
 
     <section class="addToDo">
