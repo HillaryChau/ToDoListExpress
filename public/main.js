@@ -67,9 +67,7 @@ function clearAllCompleted(event) {
 
 document.querySelector('.addTaskButton').addEventListener('click', addItem);
 document.querySelector('#clear-all').addEventListener('click', clearAll);
-document
-  .querySelector('#clear-all-completed')
-  .addEventListener('click', clearAllCompleted);
+document.querySelector('#clear-all-completed').addEventListener('click', clearAllCompleted);
 
 document.querySelectorAll('.fa-window-close').forEach((element) => {
   element.addEventListener('click', deleteItem);
